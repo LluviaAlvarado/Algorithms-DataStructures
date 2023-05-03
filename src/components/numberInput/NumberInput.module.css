@@ -1,0 +1,24 @@
+.inputContainer {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.input {
+  max-height: 3rem;
+  flex: 2;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  flex: 1;
+  text-align: center;
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  border-radius: 10px;
+  max-height: 1.5rem;
+}

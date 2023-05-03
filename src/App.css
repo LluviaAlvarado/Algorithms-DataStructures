@@ -1,0 +1,42 @@
+:root {
+  --accent-color: #ff729f;
+  --primary-color: #56cbf9;
+  --secondary-color: #c7b3ff;
+  --tertiary-color: #81f4e1;
+  --foreground-color: #d3c4d1;
+  --background-color: #131313;
+}
+
+body {
+  margin: 0;
+  margin-top: -1.2rem;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-color);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+}
+
+input {
+  font-size: large;
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid black;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+input[type='number'] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}

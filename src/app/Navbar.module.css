@@ -1,0 +1,53 @@
+.nav {
+  border-bottom: 4px solid var(--accent-color);
+  background: var(--accent-color);
+
+  background: linear-gradient(
+    45deg,
+    var(--accent-color) 0%,
+    var(--tertiary-color) 50%,
+    var(--primary-color) 100%
+  );
+
+  background: -moz-linear-gradient(
+    45deg,
+    var(--accent-color) 0%,
+    var(--tertiary-color) 50%,
+    var(--primary-color) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    45deg,
+    var(--accent-color) 0%,
+    var(--tertiary-color) 50%,
+    var(--primary-color) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr=var(--accent-color), endColorstr=var(--tertiary-color), GradientType=1 );
+}
+
+.navContainer {
+  padding: 1rem;
+}
+
+.navContent {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navLinks {
+  background-color: var(--secondary-color);
+  border-radius: 4px;
+  padding: 0.5rem;
+  box-shadow: 0px 2px var(--background-color);
+  border-color: var(--secondary-color);
+  margin-right: 1rem;
+}
+
+.navLinks:hover {
+  background-color: var(--accent-color);
+}
+
+.navLinks a {
+  text-decoration: none;
+}
