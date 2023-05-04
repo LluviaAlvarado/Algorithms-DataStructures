@@ -2,6 +2,7 @@ import './App.css'
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { Navbar } from './app/Navbar'
+import { Home } from './features/Home/Home'
 import { Heap } from './features/Heap/Heap'
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Heap />} />
+        <Route path="/" element={<Home />} />
         <Route path="heap" element={<Heap />} />
       </Routes>
     </Router>

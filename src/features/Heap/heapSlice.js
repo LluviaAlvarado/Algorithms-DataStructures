@@ -15,7 +15,7 @@ const heapifyDown = (state) => {
   let i = 0
   let lChIndex = goDown(i, LEFT)
   let rChIndex = goDown(i, RIGHT)
-  while (state.heap[lChIndex]) {
+  while (lChIndex < state.heap.length) {
     let smallerChIndex = lChIndex
     if (
       state.heap[rChIndex] &&
@@ -86,8 +86,12 @@ const heapSlice = createSlice({
     modeChanged: {
       reducer(state, action) {
         state.mode = action.payload
-        heapifyDown(state)
-        heapifyUp(state)
+        const copy = state.heap
+        state.heap = []
+        copy.forEach((element) => {
+          state.heap.push(element)
+          heapifyUp(state)
+        })
       },
     },
   },

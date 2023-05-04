@@ -16,8 +16,11 @@ export const Heap = () => {
   const [removeElement, setRemoveElement] = useState(0)
 
   const dispatch = useDispatch()
-  const onElementChanged = (e) => setElement(Number(e.target.value))
-  const onRemoveElementChanged = (e) => setRemoveElement(Number(e.target.value))
+  const onElementChanged = (e) => {
+    setElement(parseInt(e.target ? e.target.value : e))
+  }
+  const onRemoveElementChanged = (e) =>
+    setRemoveElement(parseInt(e.target ? e.target.value : e))
   const onModeChanged = (e) => {
     setMode(e.target.value)
     dispatch(modeChanged(e.target.value))
@@ -76,48 +79,46 @@ export const Heap = () => {
   return (
     <div className={styles.heapContainer}>
       <h2 className={styles.title}>The Heap Data Structure</h2>
-      <section>
-        <form className={styles.section}>
-          <div className={styles.modeKnob}>
-            <label>Mode:</label>
-            <input
-              type="radio"
-              name="mode"
-              value="min"
-              checked={mode === 'min'}
-              onChange={onModeChanged}
-            />
-            <label htmlFor="min">Min</label>
-            <input
-              type="radio"
-              name="mode"
-              value="max"
-              checked={mode === 'max'}
-              onChange={onModeChanged}
-            />
-            <label htmlFor="max">Max</label>
-          </div>
-          <InputKnob
-            id="addElement"
-            name="addElement"
-            type="number"
-            label="Add a number to the heap:"
-            value={newElement}
-            onChange={onElementChanged}
-            button="Add"
-            onClick={onAddElementClicked}
+      <section className={styles.section}>
+        <div className={styles.modeKnob}>
+          <label>Mode:</label>
+          <input
+            type="radio"
+            name="mode"
+            value="min"
+            checked={mode === 'min'}
+            onChange={onModeChanged}
           />
-          <InputKnob
-            id="removeElement"
-            name="removeElement"
-            type="number"
-            label="Remove a number from the heap:"
-            value={removeElement}
-            onChange={onRemoveElementChanged}
-            button="Remove"
-            onClick={onRemoveElementClicked}
+          <label htmlFor="min">Min</label>
+          <input
+            type="radio"
+            name="mode"
+            value="max"
+            checked={mode === 'max'}
+            onChange={onModeChanged}
           />
-        </form>
+          <label htmlFor="max">Max</label>
+        </div>
+        <InputKnob
+          id="addElement"
+          name="addElement"
+          type="number"
+          label="Add a number to the heap:"
+          value={newElement}
+          onChange={onElementChanged}
+          button="Add"
+          onClick={onAddElementClicked}
+        />
+        <InputKnob
+          id="removeElement"
+          name="removeElement"
+          type="number"
+          label="Remove a number from the heap:"
+          value={removeElement}
+          onChange={onRemoveElementChanged}
+          button="Remove"
+          onClick={onRemoveElementClicked}
+        />
       </section>
 
       <section className={`${styles.section}`}>

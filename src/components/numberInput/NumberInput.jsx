@@ -1,13 +1,22 @@
+import { useState } from 'react'
 import styles from './NumberInput.module.css'
 
 export const NumberInput = (props) => {
+  const [value, setValue] = useState(props.value || 0)
+
   const onUp = (e) => {
-    document.getElementById(props.id).stepUp()
-    e.preventDefault()
+    setValue(value + 1)
+    props.onChange(value + 1)
   }
+
   const onDown = (e) => {
-    document.getElementById(props.id).stepDown()
-    e.preventDefault()
+    setValue(value - 1)
+    props.onChange(value - 1)
+  }
+
+  const onValueChange = (e) => {
+    setValue(e.target.value)
+    props.onChange(e)
   }
 
   return (
@@ -16,8 +25,8 @@ export const NumberInput = (props) => {
         type="number"
         name={props.name}
         id={props.id}
-        value={props.value}
-        onChange={props.onChange}
+        value={value}
+        onChange={onValueChange}
         className={styles.input}
       />
       <div className={styles.buttonContainer}>

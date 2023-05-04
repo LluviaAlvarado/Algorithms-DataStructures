@@ -1,0 +1,40 @@
+.menuName {
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 0.5rem;
+  border-color: transparent;
+  border-bottom: 1px solid var(--background-color);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  margin: 0rem;
+  padding-inline: 0.5rem;
+  font-size: medium;
+}
+
+.menuName:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.linksContainer {
+  background-color: var(--tertiary-color);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 8rem;
+  max-height: 12rem;
+  overflow-y: auto;
+}
+
+.link {
+  padding: 0.5rem;
+  text-decoration: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.link:hover {
+  background-color: var(--primary-color);
+}
