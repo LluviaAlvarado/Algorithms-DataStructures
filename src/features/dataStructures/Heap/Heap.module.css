@@ -1,0 +1,34 @@
+.modeKnob {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.result {
+  text-align: center;
+}
+
+.heapVisualizer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-block: 1rem;
+  max-height: 70vh;
+}
+
+.representationContainer {
+  overflow: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-inline: 1rem;
+  align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .heapVisualizer {
+    flex-direction: column;
+  }
+}

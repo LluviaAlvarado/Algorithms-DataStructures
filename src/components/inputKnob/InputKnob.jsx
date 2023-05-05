@@ -7,13 +7,31 @@ export const InputKnob = (props) => {
       <label htmlFor={props.id} className={styles.knobLabel}>
         {props.label}
       </label>
-      <NumberInput
-        name={props.name}
-        id={props.id}
-        value={props.value}
-        onChange={props.onChange}
-        className={styles.knobInput}
-      />
+      {(() => {
+        switch (props.type) {
+          case 'number':
+            return (
+              <NumberInput
+                name={props.name}
+                id={props.id}
+                value={props.value}
+                onChange={props.onChange}
+                className={styles.knobInput}
+              />
+            )
+          default:
+            return (
+              <input
+                type="text"
+                name={props.name}
+                id={props.id}
+                value={props.value}
+                onChange={props.onChange}
+                className={styles.knobInput}
+              />
+            )
+        }
+      })()}
       <button
         type="button"
         className={styles.knobButton}

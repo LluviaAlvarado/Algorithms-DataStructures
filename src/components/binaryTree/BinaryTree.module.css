@@ -1,0 +1,44 @@
+.treeContainer {
+  background-color: white;
+}
+
+.tree {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2rem;
+}
+
+.tree::-webkit-scrollbar {
+  display: none;
+}
+
+.level {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.node {
+  margin: 0.5rem;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.lila {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  box-shadow: 2px 1px var(--foreground-color);
+}
+
+.pink {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 2px 1px var(--foreground-color);
+}
+
+.blue {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  box-shadow: 2px 1px var(--foreground-color);
+}

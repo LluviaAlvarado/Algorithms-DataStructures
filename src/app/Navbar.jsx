@@ -14,7 +14,10 @@ export const Navbar = () => {
           <Link to="/" className={styles.navLink}>
             Home
           </Link>
-          <DropdownMenu title="Algorithms" items={[]} />
+          <DropdownMenu
+            title="Algorithms"
+            items={[{ id: 1, title: 'Binary Search', route: 'binary-search' }]}
+          />
           <DropdownMenu
             title="Data Structures"
             items={[{ id: 1, title: 'Heap', route: 'heap' }]}

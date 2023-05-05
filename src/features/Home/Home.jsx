@@ -6,7 +6,9 @@ export const Home = () => {
     <div className={styles.homeContainer}>
       <div className={styles.homeSection}>
         <h2>Algorithms</h2>
-        Work in progress...
+        <Link to="binary-search" className={styles.button}>
+          Binary Search
+        </Link>
       </div>
 
       <div className={styles.homeSection}>
