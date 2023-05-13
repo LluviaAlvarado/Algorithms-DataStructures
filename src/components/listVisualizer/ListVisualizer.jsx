@@ -13,6 +13,7 @@ export const ListVisualizer = (props) => {
                 className={props.className}
                 title={props.title}
                 elements={props.elements}
+                direction={props.direction || 'column'}
               />
             )
           case 'binary-tree':

@@ -2,9 +2,9 @@ import styles from './Array.module.css'
 
 export const Array = (props) => {
   return (
-    <div className={props.className}>
+    <div className={`${props.className} `}>
       <h2>{props.title}</h2>
-      <ul className={styles.array}>
+      <ul className={`${styles.array} ${styles[props.direction]}`}>
         {props.elements.map((element, index) => (
           <li key={index} className={styles.arrayElement}>
             {element}

@@ -1,9 +1,22 @@
 import { useState } from 'react'
 import { InputKnob } from '../../../components/inputKnob/InputKnob'
+import { ListVisualizer } from '../../../components/listVisualizer/ListVisualizer'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  elementsChanged,
+  searchNumber,
+  selectAllSteps,
+  selectResult,
+} from './binarySearchSlice'
+import styles from './BinarySearch.module.css'
+
 export const BinarySearch = () => {
   const [searchArr, setSearchArr] = useState([])
   const [searchNum, setSearchNum] = useState(0)
+  let stepsList = useSelector(selectAllSteps)
+  let result = useSelector(selectResult)
 
+  const dispatch = useDispatch()
   const onSearchArrChanged = (e) => {
     setSearchArr(e.target ? e.target.value : e)
   }
@@ -12,8 +25,13 @@ export const BinarySearch = () => {
     setSearchNum(e.target ? e.target.value : e)
   }
 
-  const onSetArrClicked = (e) => {}
-  const onSearchClicked = (e) => {}
+  const onSetArrClicked = (e) => {
+    dispatch(elementsChanged(searchArr.split(',').map((num) => parseInt(num))))
+  }
+
+  const onSearchClicked = (e) => {
+    dispatch(searchNumber(parseInt(searchNum)))
+  }
 
   return (
     <div className="main-container">
@@ -35,9 +53,22 @@ export const BinarySearch = () => {
           label="Enter the number to search:"
           value={searchNum}
           onChange={onSearchNumChanged}
-          button="Set"
+          button="Search"
           onClick={onSearchClicked}
         />
+      </section>
+      <section className={`section ${styles.stepsContainer}`}>
+        <h3>{result}</h3>
+        {stepsList.map((step, index) => (
+          <ListVisualizer
+            key={index}
+            title={`Step ${index}`}
+            elements={step.list}
+            type="array"
+            direction="row"
+            className={styles.divisionStep}
+          />
+        ))}
       </section>
     </div>
   )

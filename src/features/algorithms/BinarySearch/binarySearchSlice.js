@@ -1,21 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = []
-const LEFT = 1
-const RIGHT = 2
-const goDown = (index, dir) => index * 2 + dir
-const goUp = (index) => Math.floor((index - 1) / 2)
+const initialState = {
+  steps: [{ list: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] }],
+  result: '',
+}
 
-const heapifyUp = (state) => {
-  // heapifying up
-  let i = state.heap.length - 1
-  let parentI = goUp(i)
-  while (i >= 0 && state.heap[parentI] > state.heap[i]) {
-    const parentValue = state.heap[parentI]
-    state.heap[parentI] = state.heap[i]
-    state.heap[i] = parentValue
-    i = parentI
-    parentI = goUp(i)
+const search = (state, target, start, end) => {
+  if (
+    start > end ||
+    start > state.steps[0].length ||
+    end > state.steps[0].length
+  ) {
+    state.result = `${target} not found :c`
+    return
+  }
+  const middle = Math.floor((start + end) / 2)
+  if (state.steps[0].list[middle] === target) {
+    state.result = `Found ${target} at index ${middle} :D`
+    return
+  }
+  if (state.steps[0].list[middle] > target) {
+    state.steps.push({ list: state.steps[0].list.slice(start, middle) })
+    return search(state, target, start, middle - 1)
+  }
+  if (state.steps[0].list[middle] < target) {
+    state.steps.push({ list: state.steps[0].list.slice(middle, end + 1) })
+    return search(state, target, middle + 1, end)
   }
 }
 
@@ -25,33 +35,22 @@ const binarySearchSlice = createSlice({
   reducers: {
     elementsChanged: {
       reducer(state, action) {
-        if (action.payload.length) {
-          action.payload.forEach((element) => {
-            state.heap.push(parseInt(element))
-            heapifyUp(state)
-          })
-        }
+        state.steps = []
+        state.result = ''
+        state.steps.push({ list: action.payload.sort((a, b) => a - b) })
       },
     },
-    performSearch: {
+    searchNumber: {
       reducer(state, action) {
-        let i = 0
-        while (i < state.length && state[i] !== action.payload) {
-          if (state[i] > action.payload) {
-            i = goDown(i, LEFT)
-          } else {
-            i = goDown(i, RIGHT)
-          }
-        }
-        if (i < state.length) {
-          return state[i]
-        } else {
-          return null
-        }
+        state.steps = [state.steps[0]]
+        search(state, action.payload, 0, state.steps[0].list.length - 1)
       },
     },
   },
 })
+export const { elementsChanged, searchNumber } = binarySearchSlice.actions
 
 export default binarySearchSlice.reducer
-export const selectFullTree = (state) => state
+
+export const selectAllSteps = (state) => state.binarySearch.steps
+export const selectResult = (state) => state.binarySearch.result
